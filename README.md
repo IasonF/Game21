@@ -27,13 +27,13 @@ Access the game at
 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html))
 Use the API to start a new game, make one of the 3 moves (hit, stand, split) and check the status of the game at any time.
 
-![Sample](https://github.com/IasonF/DeveloperCase/blob/master/src/main/resources/Frontend.png)
+![Sample](https://github.com/IasonF/Game21/blob/master/src/main/resources/Frontend.png)
 
 ### Components 
 
 * Game follows Spring MVC design.
 * The model contains the components (Deck, Hand) and the logic of the game.
 * API is made with Swagger.
-* Swagger-UI is used as a basic frontend UI.
+* Swagger-UI is used as a basic frontend.
 
 
