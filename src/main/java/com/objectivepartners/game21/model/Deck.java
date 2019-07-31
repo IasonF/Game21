@@ -2,16 +2,16 @@ package com.objectivepartners.game21.model;
 
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.nonNull;
 
-@Component
-final class Deck {
+public final class Deck implements Serializable {
     LinkedList<Rank> cards;
 
-    Deck() {
+    public Deck() {
         cards = Collections.nCopies(4, Arrays.asList(Rank.values()))
                 .stream()
                 .flatMap(Collection::stream)
@@ -19,7 +19,7 @@ final class Deck {
         Collections.shuffle(cards);
     }
 
-    Deck(List cards) {
+    public Deck(List cards) {
         this.cards = new LinkedList<>(cards);
     }
 

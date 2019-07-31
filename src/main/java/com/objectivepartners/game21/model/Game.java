@@ -3,6 +3,7 @@ package com.objectivepartners.game21.model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 import static java.util.Objects.requireNonNull;
 
 
-public class Game {
+public class Game implements Serializable {
     private static final Logger LOG = LoggerFactory.getLogger(Game.class);
 
     private final Deck deck;
