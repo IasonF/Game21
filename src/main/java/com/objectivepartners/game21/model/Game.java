@@ -1,6 +1,5 @@
 package com.objectivepartners.game21.model;
 
-import com.oracle.tools.packager.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -179,7 +178,7 @@ public class Game {
                     result = State.WIN;
                     break;
                 default:
-                    Log.info("Cannot determine the outcome");
+                    LOG.info("Cannot determine the outcome");
             }
         } else {
             result = (firstHandValue > bankValue) ? State.WIN : State.LOSE;
