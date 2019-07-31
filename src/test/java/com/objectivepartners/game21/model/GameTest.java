@@ -85,24 +85,24 @@ public class GameTest {
         assertTrue(g.currentState().getState() == State.WIN);
     }
 
-//    @Test
-//    public void testSplitLose() {
-//        List<Card> cards = new LinkedList<>();
-//        cards.add(new Card(Rank.ACE));
-//        cards.add(new Card(Rank.ACE));
-//        cards.add(new Card(Rank.ACE));
-//        cards.add(new Card(Rank.SEVEN));
-//        cards.add(new Card(Rank.FIVE));
-//        cards.add(new Card(Rank.NINE));
-//        Game g = new Game(new Deck(cards));
-//        g.hit();
-//        g.split();
-//        g.hit();
-//        g.stand();
-//        g.hit();
-//        g.stand();
-//        assertTrue(g.currentState().getState() == State.LOSE);
-//    }
+    @Test
+    public void testSplitLose() {
+        List<Rank> cards = new LinkedList<>();
+        cards.add(Rank.ACE);
+        cards.add(Rank.ACE);
+        cards.add(Rank.ACE);
+        cards.add(Rank.SEVEN);
+        cards.add(Rank.FIVE);
+        cards.add(Rank.NINE);
+        Game g = new Game(new Deck(cards));
+        g.hit();
+        g.split();
+        g.hit();
+        g.stand();
+        g.hit();
+        g.stand();
+        assertTrue(g.currentState().getState() == State.LOSE);
+    }
 
 
 }

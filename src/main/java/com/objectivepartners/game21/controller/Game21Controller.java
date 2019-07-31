@@ -21,7 +21,7 @@ public final class Game21Controller {
     @Autowired
     private GameHandler gameHandler;
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Start a new game of 21.")
     @ApiResponses(@ApiResponse(code = 200, message = "OK"))
@@ -32,7 +32,7 @@ public final class Game21Controller {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     @ApiOperation(value = "Check game status.")
     @ApiResponses({@ApiResponse(code = 200, message = "OK")})
     public GameState viewGame() {
@@ -40,7 +40,7 @@ public final class Game21Controller {
         return game.currentState();
     }
 
-    @RequestMapping(path = "/Game21", method = RequestMethod.POST)
+    @PostMapping(path = "/Game21")
     @ApiOperation(value = "Make a move.")
     @ApiResponses({@ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 405, message = "Move is not allowed.")})
     public GameState updateGame(

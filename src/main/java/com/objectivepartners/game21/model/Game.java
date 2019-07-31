@@ -1,5 +1,6 @@
 package com.objectivepartners.game21.model;
 
+import com.oracle.tools.packager.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,6 +21,7 @@ public class Game {
     private boolean firstHandActive = true;
     private boolean secondHandActive = false;
     private boolean split = false;
+    private boolean forceSplit = false;
     private State state;
 
 
@@ -56,8 +58,6 @@ public class Game {
             } else if (secondHandActive) {
                 secondHandActive = false;
                 setState(State.BANK_PLAYS);
-//                playBank();
-//                setGameOutcome();
             }
         }
         postUpdate();
@@ -65,6 +65,11 @@ public class Game {
     }
 
     public GameState split() {
+        return update(this::setSplit);
+    }
+
+    public GameState forceSplit() {
+        forceSplit = true;
         return update(this::setSplit);
     }
 
@@ -136,7 +141,7 @@ public class Game {
     }
 
     private void setSplit() {
-        if (((firstHand.size() == 2) && (firstHand.get(0) == firstHand.get(1)))) {
+        if (forceSplit || ((firstHand.size() == 2) && (firstHand.get(0) == firstHand.get(1)))) {
             secondHand.add(firstHand.remove(1));
             split = true;
         } else
@@ -144,7 +149,7 @@ public class Game {
     }
 
     private void setState(State newState) {
-        LOG.info(" changed from " + state + " to " + newState);
+        LOG.info("State changed from " + state + " to " + newState);
         state = newState;
     }
 
@@ -166,14 +171,21 @@ public class Game {
             switch (wins) {
                 case 0:
                     result = State.LOSE;
+                    break;
                 case 1:
                     result = State.DRAW;
+                    break;
                 case 2:
                     result = State.WIN;
+                    break;
+                default:
+                    Log.info("Cannot determine the outcome");
             }
         } else {
             result = (firstHandValue > bankValue) ? State.WIN : State.LOSE;
         }
         return result;
     }
+
+
 }

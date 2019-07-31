@@ -5,7 +5,8 @@ import java.util.function.Function;
 public enum Action {
     HIT(Game::hit),
     STAND(Game::stand),
-    SPLIT(Game::split);
+    SPLIT(Game::split),
+    FORCE_SPLIT(Game::forceSplit);
 
     private final Function<Game, GameState> logic;
 
